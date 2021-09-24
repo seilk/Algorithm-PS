@@ -23,5 +23,3 @@ def adder(string):  # one adder
 
 
 print(adder(s))
-
-# checkthisfile
