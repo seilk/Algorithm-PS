@@ -21,6 +21,7 @@ right.insert(0, 0)
 # 왼쪽카드를 행, 오른쪽 카드를 열이라고 하자
 # 왼쪽카드를 기준으로 오른쪽 카드에서 점수가 될 수 있는 경우를 체크
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_0FqtQb
 # modified
 =======
@@ -28,6 +29,8 @@ right.insert(0, 0)
 =======
 # modified
 >>>>>>> temp2
+=======
+>>>>>>> 9009ed5 (init)
 dp = [[0 for i in range(n + 1)] for i in range(n + 1)]
 for i in range(1, n + 1):
     for j in range(1, n + 1):
