@@ -10,14 +10,20 @@ for i in range(m):
     start, end = map(int, input.readline().split())
     graph[start].append(end)
     graph[end].append(start)  # 양방향 간선
+# 0  [[dummy]
+# 1   [2 3 4]
+# 2   [1 4]
+# 3   [1 4]
+# 4   [1 2]]
 
 
-def BFS(s):
-    queue = deque([s])
+def BFS(s):  # 1
+    queue = deque([s])  # [1]
     check = [0 for i in range(n + 1)]
     cnt = 0
     while queue:
-        vertex = queue.popleft()
+        []
+        vertex = queue.popleft()  # 1
         for i in (graph[vertex]):
             if not check[i]:
                 check[i] = 1

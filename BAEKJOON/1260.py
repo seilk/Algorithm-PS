@@ -10,7 +10,8 @@ graph = [
 ]  # n + 1개 행의 list 만듦, 각 행의 idx는 시작점, 각 열은 각 행에서 시작해 끝나는점
 pairSet = []
 for i in range(m):
-    pairSet.append(tuple(map(int, input.readline().split())))  # 문제에서 주어지는 pair를 저장
+    # 문제에서 주어지는 pair를 저장
+    pairSet.append(tuple(map(int, input.readline().split())))
 
 for ogn, dtn in pairSet:  # pariSet = [(origin, destination), ...]
     graph[ogn].append(dtn)
