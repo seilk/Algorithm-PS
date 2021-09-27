@@ -7,15 +7,15 @@ n, k = map(int, input().split())
 seq = list(map(int, input().split()))
 
 p1, p2 = (0, 0)
-odd_num = 1 if seq[p1] & 1 == 1 else 0
+odd_num = 1 if seq[p1] & 1 == 1 else 0  # &
 max_length = 0
 
-while p1 < n and p2 < n:
+while p1 < n and p2 < n:  # 1 2 3 4 5 6 7 8
     index_error = False
     # 홀수가 K개가 넘을 때까지 p2를 늘림
     while odd_num <= k:
         try:
-            p2 += 1
+            p2 += 1  # 1 (2 3 4 5 6) 7 8
             if seq[p2] & 1 == 1:
                 odd_num += 1
         except IndexError:
