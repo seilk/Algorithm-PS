@@ -1,4 +1,4 @@
-# Two Pointer
+# Two Pointer.
 
 from sys import stdin
 input = stdin.readline

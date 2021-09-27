@@ -1,4 +1,4 @@
-# Two Pointer
+# Two Pointer.
 from itertools import combinations
 import sys
 sys.setrecursionlimit(10 ** 7)

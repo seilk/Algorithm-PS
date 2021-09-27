@@ -1,4 +1,4 @@
-# 시간 초과
+# 시간 초과.
 import sys
 from itertools import combinations
 input = sys.stdin.readline
