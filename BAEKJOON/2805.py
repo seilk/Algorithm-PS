@@ -3,7 +3,10 @@ sys.setrecursionlimit(10 ** 7)
 input = sys.stdin.readline
 n, m = map(int, input().split())
 trees = list(map(int, input().split()))
-trees.sort()
+# trees.sort()
+# O(N) <<<<< "O(1)"
+# 가져갈 수 있는 나무의 최대 길이 -> 이진탐색에서 끝값
+# 가장 긴 나무 <- 절단기 높이의 최댓값 <- end
 
 
 def cut(start, end, lst):  # -> cut(new_s, new_e, lst) or mid
@@ -23,7 +26,7 @@ def cut(start, end, lst):  # -> cut(new_s, new_e, lst) or mid
         return cut(start, mid - 1, lst)
 
 
-print(cut(0, trees[-1], trees))
+print(cut(0, 1_000_000_000, trees))
 
 # def cutt(start, end, lst): #-> height
 #     height = 0
