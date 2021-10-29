@@ -1,4 +1,5 @@
 from collections import defaultdict
+import bisect
 
 
 def DFS(info, dic, score, visited, idx):
@@ -41,16 +42,8 @@ def solution(infos, queries):
         target = int(query.pop())  # query의 마지막 원소(점수) pop
         key = "".join(query)
         if dic[key]:
-            aim = dic[key]  # aim = query와 같은 문자열을 갖는 key의 value(vector)
-            left = 0
-            right = len(aim)
-            while left < right:  # lower bound, right와 left는 한점에서 만나게 된다.
-                mid = (left + right) // 2
-                if target <= aim[mid]:
-                    right = mid
-                else:  # aim[mid] < target
-                    left = mid + 1  # target보다 작으면 점점 오른쪽으로 밀어서 값을 크게 해야함.
-            ans.append(len(aim) - right)
+            right = bisect.bisect_left(dic[key], target)
+            ans.append(len(dic[key]) - right)
         else:  # query에서 요구하는 조건이 없을수도 있음.
             ans.append(0)
     return ans
@@ -77,3 +70,6 @@ def solution(infos, queries):
 
 print(solution(["java backend junior pizza 150", "python frontend senior chicken 210", "python frontend senior chicken 150", "cpp backend senior pizza 260", "java backend junior chicken 80", "python backend senior chicken 50"], [
     "java and backend and junior and pizza 100", "python and frontend and senior and chicken 200", "cpp and - and senior and pizza 250", "- and backend and senior and - 150", "- and - and - and chicken 100", "- and - and - and - 150"]))
+
+
+[]
