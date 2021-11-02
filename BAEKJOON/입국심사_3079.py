@@ -1,4 +1,5 @@
 import sys
+import bisect
 def input(): return sys.stdin.readline().rstrip()
 
 
@@ -23,6 +24,7 @@ lower = min(times)
 # lower bound 기본꼴
 # while문 사용
 # 큰 틀에서 right를 출력하는 방식 사용
+# iterable한 자료형이 존재하는것이 아니고 mid 시간마다 사람의 수도 따로 구해야 하기 때문에 한번에 bisect를 사용하기는 어려움
 left = lower
 right = upper
 while left < right:  # right와 left가 같아지는 순간 while문 탈출
@@ -39,11 +41,12 @@ while left < right:  # right와 left가 같아지는 순간 while문 탈출
 # left는 조건이 맞으면 mid+1 해주고 right는 조건이 맞으면 mid값으로 고정시키면서 mid값이 target과 일치할 때 right값이 움직이지 않으면서 left값은 +1로 right값에 다가가게 된다.
 print(right)
 # 번외
+#
 # 같은 값이 여러개일경우 최소 구하기
 # [1,2,2,2,3,4,5,6]에서 2가 타겟이고 최소 인덱스를 구해야한다고 하자.
 # 2가 여러개여서 mid가 2가 되는 순간이 많을것이다.
 # 3가지 경우가 있다.
-# 1.mid가 target과 일치 -> right가 고정하고 mid는 항상 right보다 왼쪽에 존재하므로 중복으로 mid가 일치하면 다시 right가 mid값으로 왼쪽으로 이동해서 고정되고 일치하지 않는다면 left가 mid + 1로 잡히면서 right와 좁혀진다.
+# 1. mid가 target과 일치 -> right가 고정하고 mid는 항상 right보다 왼쪽에 존재하므로 중복으로 mid가 일치하면 다시 right가 mid값으로 왼쪽으로 이동해서 고정되고 일치하지 않는다면 left가 mid + 1로 잡히면서 right와 좁혀진다.
 # 2. mid가 target의 오른쪽 -> mid를 왼쪽으로 옮겨서 target을 찾아야함 : right를 mid로 잡고 반복문 시작
 # 3. mid가 target의 왼쪽 -> mid를 오른쪽으로 옮겨서 target을 찾아야함 : left를 mid + 1로 잡고 반복분 시작
 # 이 때 mid가 아니라 mid + 1인 이유는 mid로 하면 원소가 2개남은 상황에서 mid는 항상 left가 나오기 때문에 반복문이 끝나지 않기 때문이다.
@@ -51,3 +54,6 @@ print(right)
 #
 # upper bound는 left를 고정하고 right를 -1 해주면서 다가가면 된다.
 # if mid <= target: left = mid ; else : right = mid - 1 return left
+
+
+bisect.bisect_left
