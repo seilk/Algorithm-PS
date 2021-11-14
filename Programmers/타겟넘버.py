@@ -8,19 +8,19 @@ x = []
 
 
 def solution(numbers, target) -> int:
-    minus = [1, -1]
+  minus = [1, -1]
 
-    def DFS(idx, cnt):
-        if idx == len(numbers):
-            if sum(numbers) == target:
-                cnt += 1
-            return cnt
-        for i in range(2):
-            numbers[idx] *= minus[i]
-            cnt = DFS(idx + 1, cnt)
-            numbers[idx] *= minus[i]
+  def DFS(idx, cnt):
+    if idx == len(numbers):
+        if sum(numbers) == target:
+            cnt += 1
         return cnt
-    return DFS(0, 0)
+    for i in range(2):
+        numbers[idx] *= minus[i]
+        cnt = DFS(idx + 1, cnt)
+        numbers[idx] *= minus[i]
+    return cnt
+  return DFS(0, 0)
 
 
 print(solution([1, 1, 1, 1, 1], 3))
