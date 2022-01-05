@@ -11,7 +11,7 @@
 
 # ----------Code with Detail
 import sys
-from collections import deque
+
 input = sys.stdin.readline
 N = int(input().rstrip())
 level = [0] + list(map(int, input().split()))
@@ -34,5 +34,5 @@ for i in range(Q):
   elif ed == st:
     miss = 0
   else:
-    miss = (check[ed - 1] - check[st]) + (check[st] - check[st-1])
+    miss = (check[ed - 1] - check[st]) + (check[st] - check[st - 1])  # 누적합을 이용한 수식
   print(miss)
