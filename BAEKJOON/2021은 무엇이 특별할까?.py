@@ -1,7 +1,7 @@
 import sys
 
 
-def isPrime(n):
+def isprime(n):
   if n == 1:
     return False
   if n == 2:
@@ -25,6 +25,6 @@ if __name__ == "__main__":
   num = int(input().rstrip())
   prime = []
   for k in range(104):
-    if isPrime(k):
+    if isprime(k):
       prime.append(k)
   print(find(num))
