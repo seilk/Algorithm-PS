@@ -11,7 +11,6 @@
 # https://www.acmicpc.net/board/view/70289
 # https://torbjorn.tistory.com/361
 #
-
 # ----------Code with Detail
 import sys
 
