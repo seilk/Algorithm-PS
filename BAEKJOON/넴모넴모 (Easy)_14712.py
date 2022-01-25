@@ -25,7 +25,7 @@ if __name__ == "__main__":
   MIS = lambda: map(int, R().split())
   N, M = MIS()
   MAP = [[0] * (M + 2)] + [[0] * (M + 2) for i in range(N + 1)]
-  visited = [[0] * (M + 2)] + [[0] * (M + 2) for i in range(N + 1)]
+  visited = [[0] * (M + 2)] + [[0] * (M + 2) for i in range(N + 1)] #체킹에 편하게끔 위,아래,왼,오에 한줄씩 더 생성함
   num = 1
   cnt = 0
   CHECK(1, 1)
