@@ -8,25 +8,13 @@ def findMaxSum(r, c):
     MXX = max(MXX, sum(tmp))
     return
   for i in range(r,R):
-    cc = c + 1 if i == r else 0
+    cc = c + 1 if i == r else 0 # DFS 중복을 제거하는 조건
     for j in range(cc,C):
-      flg = True
-      for pi, pj in [(i-1,j), (i,j-1)]:
-        if 0<=pi<R and 0<=pj<C:
-          if not visited[pi][pj]:
-            flg = False
-            break
-      if not visited[i][j] and flg:
+      if not visited[i][j] and isNotEmptyPriviousBlocks(C, R, i, j):
         for ni, nj in [(i,j),(i+1,j),(i+2,j),(i+3,j)]:
           if 0<=ni<R and 0<=nj<C:
-            flgg = True
-            for ki in range(i,ni+1):
-              if visited[ki][nj]:
-                flgg = False
-                break
-            if flgg:
-              for ii in range(i,ni+1):
-                visited[ii][nj]=1
+            if isEmptyForwardRowBlocks(i, ni, nj):
+              fillRowBlocks(i, ni, nj)
               tmp.append(int("".join([arr[iii][j] for iii in range(i,ni+1)])))
               findMaxSum(i, j)
               tmp.pop()
@@ -34,19 +22,52 @@ def findMaxSum(r, c):
                 visited[ii][nj]=0
         for ni, nj in [(i,j+1),(i,j+2),(i,j+3)]:
           if 0<=ni<R and 0<=nj<C:
-            flgg = True
-            for kj in range(j,nj+1):
-              if visited[ni][kj]:
-                flgg = False
-                break
-            if flgg:
-              for jj in range(j,nj+1):
-                visited[ni][jj]=1
+            if isEmptyForwardColBlocks(j, ni, nj):
+              fillColBlocks(j, ni, nj)
               tmp.append(int("".join([arr[i][jjj] for jjj in range(j,nj+1)])))
               findMaxSum(i, j)
               tmp.pop()
               for jj in range(j,nj+1):
                 visited[ni][jj]=0
+
+
+def fillColBlocks(j, ni, nj):
+  for jj in range(j, nj + 1):
+    visited[ni][jj] = 1
+
+
+def fillRowBlocks(i, ni, nj):
+  for ii in range(i, ni + 1):
+    visited[ii][nj] = 1
+
+
+def isEmptyForwardColBlocks(j, ni, nj):
+  flgg = True
+  for kj in range(j, nj + 1):
+    if visited[ni][kj]:
+      flgg = False
+      break
+  return flgg
+
+
+def isEmptyForwardRowBlocks(i, ni, nj):
+  flgg = True
+  for ki in range(i, ni + 1):
+    if visited[ki][nj]:
+      flgg = False
+      break
+  return flgg
+
+
+def isNotEmptyPriviousBlocks(C, R, i, j):
+  flg = True
+  for pi, pj in [(i - 1, j), (i, j - 1)]:
+    if 0 <= pi < R and 0 <= pj < C:
+      if not visited[pi][pj]:
+        flg = False
+        break
+  return flg
+
 
 if __name__=="__main__":
   R, C = MIS()
