@@ -9,7 +9,7 @@ In = lambda : sys.stdin.readline().rstrip()
 MIS = lambda : map(int, In().split())
 D = lambda n : (2*n)%10000
 S = lambda n : 9999 if n == 0 else n-1
-L = lambda n : (n//1000+(n%1000)*10)# 1234->2341->3412, 123->1230
+L = lambda n : (n//1000+(n%1000)*10)# 1234->2341->3412, 123->1230 #rotate는 str사용하고 시간복잡도도 크기 때문에 비추
 R = lambda n : (n//10+(n%10)*1000)
 
 def BFS(st:int, target:int):
