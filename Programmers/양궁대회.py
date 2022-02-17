@@ -1,12 +1,8 @@
-# 라이언이 진 게임 = 어피치가 이김
-# 라이언이 비긴 게임 = 어피치가 이김
-# 라이언은 어피치를 이기려면 무조건 한개라도 더 맞춰야함
-# 화살이 0개인 게임 = 둘 다 점수 X
 def solution(n, info):
   apeach = 0
   mxx = (0, [0] * 11)
-  for i in range(2048):  # i = 0 ~ 2047
-    rr = [0] * 11
+  for i in range(2048):  # i = 0 ~ 2047 ex) i == 2030
+    rr = [0] * 11 # 라이언이 이기는 경우 001..000
     for bt in range(11, -1, -1):
       if 2 ** bt & i:
         rr[10 - bt] = 1
@@ -29,6 +25,7 @@ def solution(n, info):
         scoreRY += 10 - idx
         rrr[idx] += info[idx] + 1
         arrow += 1
+
     if arrow == n and scoreRY > scoreAP:
       diff = scoreRY - scoreAP
       if mxx[0] < diff:
