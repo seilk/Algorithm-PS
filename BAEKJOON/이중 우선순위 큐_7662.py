@@ -8,7 +8,7 @@ MIS = lambda : map(int, In().split())
 T=int(In())
 for t in range(T):
   K=int(In())
-  dix=defaultdict(int)
+  dix=defaultdict(int) # 정수가 32비트라서 2^32개의 리스트를 만들수는 없다.
   maxq=[] #최대힙
   minq=[] #최소힙
   for k in range(K):
