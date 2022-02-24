@@ -9,12 +9,21 @@ neither = []
 # 듣도 보도 못한 사람은 듣도 못한 사람에 전부 포함된다.
 
 for i in range(n):
+<<<<<<< HEAD
   people.add(str(stdin.readline().rstrip()))
 
 for i in range(m):
   p = str(stdin.readline().rstrip())
   if p in people:
     neither.append(p)
+=======
+    people.add(str(stdin.readline().rstrip()))
+
+for i in range(m):
+    p = str(stdin.readline().rstrip())
+    if p in people:
+        neither.append(p)
+>>>>>>> temp2
 
 neither.sort()
 print(len(neither))

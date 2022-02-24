@@ -6,6 +6,7 @@
 # N <= 10**6, ,자연수, 0
 from sys import stdin
 import collections
+<<<<<<< HEAD
 numberlst = [0 for i in range(10)]  # index가 곧 숫자 #숫자가 몇개 들어가는지 기록
 
 nlst = list((stdin.readline().rstrip()))  # ['1', '2', '3'...]
@@ -16,7 +17,23 @@ for key in dic:
 
 numberlst[9] = ((numberlst[6] + numberlst[9]) // 2) + \
     ((numberlst[6] + numberlst[9]) % 2)
+=======
+numberlst = [0 for i in range(10)]  #index가 곧 숫자 #숫자가 몇개 들어가는지 기록
+
+nlst = list((stdin.readline().rstrip())) #['1', '2', '3'...]
+dic = dict(collections.Counter(nlst))  #Counter({'1' : 2, '2' : 3, ...})
+
+for key in dic:
+    numberlst[int(key)] = dic[key]
+
+numberlst[9] = ((numberlst[6] + numberlst[9]) // 2) + ((numberlst[6] + numberlst[9]) % 2)
+>>>>>>> temp2
 del numberlst[6]
 numberset = max(numberlst)
 print(numberset)
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> temp2

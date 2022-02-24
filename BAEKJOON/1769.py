@@ -7,4 +7,8 @@ for i in range(5):
     t = 0
     for i in n:
         t += int(i)
+<<<<<<< HEAD
     n = str(t)
+=======
+    n = str(t)
+>>>>>>> temp2
