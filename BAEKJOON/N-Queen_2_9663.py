@@ -26,7 +26,6 @@ if __name__ == "__main__":
   R = lambda: sys.stdin.readline().rstrip()
   N = int(R())
   cnt = 0
-  COORDS = []
   visitRow = [-1] * N  # 해당 인덱스 row에 column의 위치 저장
   visitCol = [-1] * N  # 해당 인덱스의 col이 선택됐는지 여부
   CHECK(-1, 0)

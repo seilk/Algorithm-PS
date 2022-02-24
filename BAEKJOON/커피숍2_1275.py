@@ -1,6 +1,8 @@
 import sys
 import math
-sys.setrecursionlimit(10**4)
+
+sys.setrecursionlimit(10 ** 4)
+
 
 def makeSegtree(curnode, start, end):
   if start == end:
@@ -46,6 +48,7 @@ def solve():
     diff = to - arr[idx - 1]
     arr[idx - 1] += diff
     valChangeSegtree(1, 0, N - 1, idx - 1, diff)
+
 
 input = sys.stdin.readline
 N, Q = map(int, input().split())

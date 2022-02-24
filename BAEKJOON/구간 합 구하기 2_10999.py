@@ -6,6 +6,7 @@
 # 이후 update와 find를 실행시킬때 lazy가 존재하는 모든 노드에서는 lazy를 반영-전파-삭제한 뒤 이어서 작업을 수행
 # segsum을 해줄때나 segupdate를 해줄때나 lazy가 존재하는 노드에서는 lazy를 반영-전파-삭제 하는 과정 실행
 # !주의 : lazy가 음수일 경우가 있음
+# https://bowbowbow.tistory.com/4
 import sys
 
 def segInit(start, end, cur):

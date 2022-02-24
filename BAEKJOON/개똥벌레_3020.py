@@ -26,7 +26,7 @@ for i in range(1, N + 1):
 
 
 def sort(lst, foo):
-  if foo == True:  # 종유석(위에서 아래)
+  if foo:  # 종유석(위에서 아래)
     for h in range(1, H + 1):
       lst[h] += lst[h - 1]
   else:  # 석순(아래에서 위)
@@ -49,7 +49,6 @@ tot(X, Y)
 mn = min(Z[1:])
 cnt = Z[1:].count(mn)
 print(mn, cnt)
-
 
 # 4 500000
 # 40000

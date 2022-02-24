@@ -1,10 +1,10 @@
 import sys
 from collections import deque
-
 sys.setrecursionlimit(10 ** 4)
-input = sys.stdin.readline
-N, M = map(int, input().split())
-ground = [list(map(int, list(input().rstrip()))) for i in range(N)]
+In = lambda : sys.stdin.readline().rstrip()
+MIS = lambda : map(int, In().split())
+N, M = MIS()
+ground = [[*map(int, list(In()))] for i in range(N)]
 visited = [[0] * M for i in range(N)]
 
 

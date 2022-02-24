@@ -11,33 +11,33 @@ words = [set(list(input()[4:-4])) for i in range(n)]
 for i in range(n):
     words[i] -= mustLearn
 #
-wordToBits = []
+wordToBits = [] 
 proposed = set()
 for word in words:
-    tmp = 1 << 26
+    tmp = 1 << 26 #10000...000
     for w in word:
-        tmp |= 1 << ord(w) - 97
-        proposed.add(ord(w) - 97)
+        tmp |= 1 << ord(w) - ord('a')
+        proposed.add(ord(w) - ord('a'))
     wordToBits.append(tmp)
 #
-alphabet = 1 << 26
-alphabet |= 1 << ord('a') - 97
-alphabet |= 1 << ord('n') - 97
-alphabet |= 1 << ord('t') - 97
-alphabet |= 1 << ord('i') - 97
-alphabet |= 1 << ord('c') - 97
+alphabet = 1 << 26 
+alphabet |= 1 << ord('a') - ord('a')
+alphabet |= 1 << ord('n') - ord('a')
+alphabet |= 1 << ord('t') - ord('a')
+alphabet |= 1 << ord('i') - ord('a')
+alphabet |= 1 << ord('c') - ord('a')
 #
 ans = 0
-pre = alphabet
+pre = alphabet 
 if k - 5 >= 0:
     sel = len(proposed) if k - 5 >= len(proposed) else k - 5
     combies = combinations(proposed, sel)
     for combi in combies:
         cnt = 0
-        for word in combi:
-            alphabet |= 1 << word
-        for word in wordToBits:
-            if alphabet & word == word:
+        for learn in combi:
+            alphabet |= 1 << learn
+        for target in wordToBits:
+            if alphabet & target == target: 
                 cnt += 1
         ans = max(ans, cnt)
         alphabet = pre

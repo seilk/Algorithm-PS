@@ -5,20 +5,18 @@
 
 # ----------Tip
 # 세그먼트 트리
+# 펜윅 트리
 
 # ----------URLs
-
+# https://yabmoons.tistory.com/431
 
 # ----------Code with Detail
 import sys
 import math
 
-
-# 세그먼트 트리 만들어주기 (구간합을 저장하는 이진 트리)
-
 # 재귀적으로 segment tree 만들어주기
-def makesegtree(curnode, start, end):
-  if start == end:
+def makesegtree(curnode, start, end): #1 , 0 , N - 1
+  if start == end: # st = 1 end = 1 -> idx = 1 1~1
     segtree[curnode] = arr[start]
     return curnode
   mid = (start + end) // 2
@@ -43,6 +41,7 @@ def sumvalue(curnode, nodestart, nodeend, start, end):
     return segtree[curnode]
   if (end < nodestart) or (nodeend < start):  # 범위가 전혀 맞지 않는 경우
     return 0
+  #1-3 인데 node의 구간은 2-4 -> 2-3 -> 2, 3
   mid = (nodestart + nodeend) // 2
   left_sum = sumvalue(curnode * 2, nodestart, mid, start, end)
   right_sum = sumvalue(curnode * 2 + 1, mid + 1, nodeend, start, end)

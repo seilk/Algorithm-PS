@@ -31,7 +31,7 @@ def BFS():
 
 def solve(N, M):
   mnn = 1_000_002
-  tmp = BFS()
+  tmp = BFS() # [dist1 , dist2]
   mnn = min(mnn, min(tmp))
   if (N, M) == (1, 1):
     print(1)

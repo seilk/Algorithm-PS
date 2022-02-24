@@ -10,25 +10,25 @@ sol = []
 stack = []
 log = []
 for i in ascending:
-    while True:
-        if stack and stack[-1] == goal[0]:
-            sol.append(stack.pop())
-            goal.popleft()
-            log.append("-")
-        else:
-            break
-    stack.append(i)
-    log.append("+")
+  while True:
+    if stack and stack[-1] == goal[0]:
+      sol.append(stack.pop())
+      goal.popleft()
+      log.append("-")
+    else:
+      break
+  stack.append(i)
+  log.append("+")
 
 goal = goal_copy
 
 if stack:
-    sol += stack[::-1]
-    log += ["-"] * (len(stack))
-    if sol != goal:
-        print("NO")
-    else:
-        print(*log, sep="\n")
+  sol += stack[::-1]
+  log += ["-"] * (len(stack))
+  if sol != goal:
+    print("NO")
+  else:
+    print(*log, sep="\n")
 
 else:
-    print(*log, sep="\n")
+  print(*log, sep="\n")

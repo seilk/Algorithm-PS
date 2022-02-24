@@ -10,6 +10,8 @@ def findMaxSum(r, c):
   for i in range(r,R):
     cc = c + 1 if i == r else 0 # DFS 중복을 제거하는 조건
     for j in range(cc,C):
+      # 어떤 콜스택에서의 for문이 블록을 다 탐색한 뒤에 다음 블록으로 갈 때
+      # 앞선 블록을 비워두고 조건을 판단하면 안된다. 이 문제는 다음 기준 블록을 탐색할때 이전의 블록들이 다 채워져있는 상태를 가정해야함
       if not visited[i][j] and isNotEmptyPriviousBlocks(C, R, i, j):
         for ni, nj in [(i,j),(i+1,j),(i+2,j),(i+3,j)]:
           if 0<=ni<R and 0<=nj<C:

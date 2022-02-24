@@ -28,7 +28,6 @@ def solve():
       visited[f] = 1
       for t, w in graph[f]:  # index : vertex
         if not visited[t]:  # 방문하지 않은 vertex에 한해서
-          # heappush tuple which is (weight, vertex)
           heapq.heappush(pq, (w, t))  # weight : graph[from][to]
   print(str(ans))
 

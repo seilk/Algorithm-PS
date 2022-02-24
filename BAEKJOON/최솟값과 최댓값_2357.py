@@ -57,21 +57,21 @@ def findsegmax(curnode, nodestart, nodeend, start, end):
   right_max = findsegmax(curnode * 2 + 1, mid + 1, nodeend, start, end)
   return max(left_max, right_max)
 
+if __name__ == "__main__":
+  input = sys.stdin.readline
+  INF = 1_000_000_000
+  N, M = map(int, input().split())
+  arr = [int(input()) for i in range(N)]
+  segheight = ceil(log2(N))
+  segsize = 1 << (segheight + 1) # len(arr) * 4
 
-input = sys.stdin.readline
-INF = 1_000_000_000
-N, M = map(int, input().split())
-arr = [int(input()) for i in range(N)]
-segheight = ceil(log2(N))
-segsize = 1 << (segheight + 1)
+  segtree_min = [-1 for i in range(segsize)]
+  segtree_max = [-1 for i in range(segsize)]
+  makesegtree_min(1, 0, N - 1)
+  makesegtree_max(1, 0, N - 1)
 
-segtree_min = [-1 for i in range(segsize)]
-segtree_max = [-1 for i in range(segsize)]
-makesegtree_min(1, 0, N - 1)
-makesegtree_max(1, 0, N - 1)
-
-for i in range(M):
-  x0, x1 = map(int, input().split())
-  ans_min = findsegmin(1, 0, N - 1, x0 - 1, x1 - 1)
-  ans_max = findsegmax(1, 0, N - 1, x0 - 1, x1 - 1)
-  print(ans_min, ans_max)
+  for i in range(M):
+    x0, x1 = map(int, input().split())
+    ans_min = findsegmin(1, 0, N - 1, x0 - 1, x1 - 1)
+    ans_max = findsegmax(1, 0, N - 1, x0 - 1, x1 - 1)
+    print(ans_min, ans_max)

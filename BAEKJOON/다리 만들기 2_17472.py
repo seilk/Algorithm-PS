@@ -1,13 +1,15 @@
 import sys
 from collections import deque
 from heapq import heappush, heappop
+
 In = lambda : sys.stdin.readline().rstrip()
 MIS = lambda : map(int, In().split())
 
-# 섬 번호 매기기
-# 섬에서 상하좌우 직선으로 이동해서 다른 섬 찾는 함수 만들기
-# 만약 A->B 섬의 최단경로가 갱신될 수 있으면 갱신 해주기
-# 최소 스패닝 트리로 모든 번호를 연결하는 가장 최단 경로 구하기(prim)
+# 풀이 순서
+# 1. 섬 번호 매기기
+# 2. 섬에서 상하좌우 직선으로 이동해서 다른 섬 찾는 함수 만들기
+# 3. 만약 A->B 섬의 최단경로가 갱신될 수 있으면 갱신 해주기
+# 4. 최소 스패닝 트리로 모든 번호를 연결하는 가장 최단 경로 구하기(prim)
 
 def numbering(num,x,y):
   dq=deque([(x,y)])
@@ -23,7 +25,7 @@ def numbering(num,x,y):
   islnums.append(num)
 
 def findEdge(x,y,num):
-  for i in range(x+1,N): #아래로 이동
+  for i in range(x+1,N): # 아래로 이동
     if isl[i][y]==num: # 현재 번호와 동일한 번호인 경우 break
       break
     elif isl[i][y]>=1:
@@ -76,23 +78,23 @@ def mst(size): #최소스패닝 트리 알고리즘 - prim
 
 N,M=MIS()
 isl=[[*MIS()] for i in range(N)]
-num=1
+num=1 # 섬 번호
 visited=[[0]*M for n in range(N)]
 
-islnums=[] # 섬의 번호 (노드) 저장
+islnums=[] # 섬의 번호 (노드) 저장 [1,2,3,4]
 for r in range(N):
   for c in range(M):
     if not visited[r][c] and isl[r][c]==1:
       numbering(num,r,c)
       num+=1
 
-grp = [[0]*(islnums[-1]+1) for i in range(islnums[-1]+1)] # 인접리스트로 그래프 구현
+grp = [[0]*(islnums[-1]+1) for i in range(islnums[-1]+1)] #V*V # 인접리스트로 그래프 구현
 for r in range(N):
   for c in range(M):
     if isl[r][c]>=1:
       findEdge(r,c,isl[r][c])
 
-grpp=[[] for i in range(islnums[-1]+1)]
+grpp=[[] for i in range(islnums[-1]+1)] #[[(w,nn),... ] [] [] []]
 for i in range(1,islnums[-1]+1):
   for j in range(1,islnums[-1]+1):
     if grp[i][j]!=0:
