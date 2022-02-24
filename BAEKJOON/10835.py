@@ -20,29 +20,18 @@ right.insert(0, 0)
 # 순서가 중요한 문제
 # 왼쪽카드를 행, 오른쪽 카드를 열이라고 하자
 # 왼쪽카드를 기준으로 오른쪽 카드에서 점수가 될 수 있는 경우를 체크
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< .merge_file_0FqtQb
-# modified
-=======
->>>>>>> .merge_file_q6ka4r
-=======
-# modified
->>>>>>> temp2
-=======
->>>>>>> 9009ed5 (init)
 dp = [[0 for i in range(n + 1)] for i in range(n + 1)]
 for i in range(1, n + 1):
-    for j in range(1, n + 1):
-        if left[i] > right[j - 1]:
-            dp[i][j] = max(right[j - 1] + dp[i][j - 1],
-                           dp[i - 1][j - 1], dp[i - 1][j])
-        else:
-            dp[i][j] = max(dp[i - 1][j - 1], dp[i - 1][j])
+  for j in range(1, n + 1):
+    if left[i] > right[j - 1]:
+      dp[i][j] = max(right[j - 1] + dp[i][j - 1],
+                     dp[i - 1][j - 1], dp[i - 1][j])
+    else:
+      dp[i][j] = max(dp[i - 1][j - 1], dp[i - 1][j])
 
 if right[n] < left[n]:
-    sol = max(dp[n][n] + right[n], dp[n][n])
+  sol = max(dp[n][n] + right[n], dp[n][n])
 else:
-    sol = dp[n][n]
+  sol = dp[n][n]
 
 print(sol)
