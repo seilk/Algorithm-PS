@@ -3,7 +3,6 @@ from heapq import heappush, heappop
 
 In = lambda : sys.stdin.readline().rstrip()
 MIS = lambda : map(int, In().split())
-
 T = int(In())
 for t in range(T):
   M = int(In())
