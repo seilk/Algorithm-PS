@@ -35,10 +35,10 @@ def solve():
 	arr = [i for i in range(N)]
 	# ans = 0
 	for n in range(N):
-		for m in range(n + 1, N):
+		for m in range(n + 1, N): # 조합이므로 (a,b)==(b,a)
 			# math 라이브러리 사용하면 시간초과. 두 점 사이 거리 구할 때 sqrt 사용 자제
 			if dist(xx[n], yy[n], xx[m], yy[m]) <= (rr[n] + rr[m]) ** 2:
-				if find(n, arr) == find(m, arr): continue
+				if find(n, arr) == find(m, arr): continue # 부모 노드가 같으면 continue
 				union(n, m, arr)
 				
 	tot = 0 # 부모노드 개수 갱신
@@ -48,7 +48,7 @@ def solve():
 		if vist[find(arr[n], arr)] == 0:
 			vist[arr[n]] = 1
 			tot += 1
-	print(tot)
+	print(tot) # 이렇게 해주는 방법도 있고 union 해줄때 마다 흡수되는 노드의 개수를 1개씩 카운트해줘서 (전체 노드 - 흡수된 노드)의 방법도 있음.
 
 if __name__ == "__main__":
 	T = int(In())
