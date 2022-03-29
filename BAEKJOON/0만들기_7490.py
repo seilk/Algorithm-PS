@@ -5,6 +5,7 @@ MIS = lambda:map(int,In().split())
 
 
 def command(i):
+	# ascii 순서로 정렬
 	if i==0:
 		return " "
 	if i==1:
