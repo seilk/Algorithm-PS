@@ -7,18 +7,22 @@ MIS = lambda:map(int,In().split())
 def check(i,j,a,b,K):
 	return a*i+b*j
 
+def swap(x, y):
+	return y, x
 # O(NlogN)
 def solve(a,b,K):
-	for x in range(50000,0,-1):
+	for x in range(1, K + 1):
 		left = 1
-		right = 50000
+		right = K
 		while left <= right:
 			mid = (left+right)//2
 			now = check(x,mid,a,b,K)
 			if now > K:
 				right = mid-1
-			elif now ==K:
-				return x,mid
+			elif now == K:
+				if x > mid:
+					x, mid = swap(x, mid)
+				return x, mid
 			else:
 				left = mid+1
 
